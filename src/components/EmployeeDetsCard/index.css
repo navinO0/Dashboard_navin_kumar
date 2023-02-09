@@ -1,0 +1,17 @@
+.employee-dets-card {
+  width: 99%;
+  border: solid 1px #e2e8f0;
+  padding: 10px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  border-radius: 10px;
+  margin: 3px 7px 3px 7px;
+}
+
+.username-initial-container {
+  display: flex;
+  align-items: center;
+}

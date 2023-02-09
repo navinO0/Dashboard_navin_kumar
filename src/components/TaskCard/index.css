@@ -1,0 +1,125 @@
+.add-task-container-main {
+  height: auto;
+  display: flex;
+}
+
+.task-main-container {
+  width: 25vw;
+  border: solid 1px #e2e8f0;
+  padding: 15px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.task-status {
+  font-family: 'Roboto';
+  font-size: 10px;
+  color: #7b8794;
+  font-weight: 400;
+}
+
+.task-card-content {
+  display: flex;
+}
+.priority-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+.task-card-content {
+  font-family: 'roboto';
+  font-size: 13px;
+  margin-right: 10px;
+  margin-top: 0px;
+  margin-bottom: 6px;
+}
+
+.task-card-content-task {
+  font-family: 'Roboto';
+  font-size: 17px;
+  display: flex;
+  flex-direction: column;
+}
+
+.task-status-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.task-card-content-status {
+  justify-self: flex-end;
+  font-family: 'Roboto';
+  font-size: 13px;
+}
+.update-task-btn {
+}
+.deadline-priority-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.update-btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.update-delete-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+.participants-list-main-container {
+}
+.participants-ul-list-container {
+  overflow-y: auto;
+  width: 450px;
+  height: auto;
+  max-height: 200px;
+  border: solid 1px #e2e8f0;
+  padding: 15px;
+  box-shadow: 0px 4px 16px 0px #e8e8e8;
+  margin-top: 20px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+.task-card-content-task-container {
+  height: auto;
+  width: 100%;
+  word-wrap: break-word;
+}
+.update-status-ul-container {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding-left: 0px;
+}
+
+.label-opt {
+  font-family: 'Roboto';
+  font-size: 10px;
+  font-weight: 500;
+  color: #7b8794;
+}
+.update-opt-li-item {
+  display: flex;
+  align-items: center;
+}
+.custum-popupStyles {
+  width: 400px;
+}
+.popup-content {
+  margin: auto;
+  background: rgb(255, 255, 255);
+  width: auto;
+  padding: 5px;
+}
+.popup-content {
+  width: auto;
+}
+.popup-container-participants {
+  width: 600px;
+}
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,27 @@
+.employs-card-main-container {
+}
+
+.employs-card-left-main-container {
+  display: flex;
+  flex-direction: column;
+
+  padding: 10px;
+}
+
+.user-list-creator-ul-list {
+  list-style: none;
+  padding: 2px 3px 3px 2px;
+}
+
+.company-name-container {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 30px;
+  padding-left: 30px;
+  border: solid 1px #d7dfe9;
+  border-radius: 10px;
+  background-color: #ebebeb;
+  height: 190px;
+  margin-top: 20px;
+  box-shadow: 0px 4px 16px 0px #e8e8e8;
+}

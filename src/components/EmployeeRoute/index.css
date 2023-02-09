@@ -1,0 +1,11 @@
+.employee-route {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.tasks-ul-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding-left: 7px;
+  overflow-y: auto;
+}

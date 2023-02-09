@@ -1,0 +1,88 @@
+.login-main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-image-container {
+}
+.register-image {
+  height: 600px;
+}
+.login-main-heading {
+  font-family: 'Roboto';
+  font-size: 30px;
+}
+.username-topic-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.label {
+  font-family: 'Roboto';
+  font-size: 12px;
+  font-weight: 500;
+  color: #7b8794;
+}
+.user-name-input {
+  height: 30px;
+  border: solid 1px #cbd5e1;
+  border-radius: 6px;
+  font-family: 'Roboto';
+  padding: 10px;
+  color: #64748b;
+  outline: none;
+}
+.select-options {
+  height: 40px;
+  border: solid 1px #cbd5e1;
+  border-radius: 6px;
+  font-family: 'Roboto';
+
+  color: #64748b;
+  outline: none;
+}
+.option-item {
+  height: 30px;
+  border: solid 1px #cbd5e1;
+  border-radius: 6px;
+  font-family: 'Roboto';
+  padding: 10px;
+  color: #64748b;
+  outline: none;
+}
+.register-now-btn {
+  background-color: #3b82f6;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #ffffff;
+  font-family: 'Roboto';
+  border: none;
+  border-radius: 5px;
+  font-size: 17px;
+  cursor: pointer;
+  outline: none;
+  margin-top: 30px;
+  margin-right: 20px;
+}
+.error-msg {
+  font-family: 'Roboto';
+  font-size: 13px;
+  color: #ff0b37;
+}
+
+.creator-or-employee-qn {
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 400;
+  color: #7b8794;
+}
+.options-container {
+  display: flex;
+}
+.creator-employee-inputs {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}

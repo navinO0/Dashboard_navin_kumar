@@ -1,0 +1,123 @@
+.add-task-container-main {
+  display: flex;
+  align-items: flex-start;
+}
+
+.main-content-Container {
+  width: 450px;
+  border: solid 1px #e2e8f0;
+  padding: 15px;
+  box-shadow: 0px 4px 16px 0px #e8e8e8;
+  margin-top: 20px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.add-task-container {
+  width: 450px;
+  border: solid 1px #e2e8f0;
+  padding: 15px;
+  box-shadow: 0px 4px 16px 0px #e8e8e8;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.take-task {
+}
+.task-input-element {
+  outline: none;
+  padding: 10px;
+  font-family: 'Roboto';
+  border: solid 1px #e2e8f0;
+  border-radius: 8px;
+  width: 100%;
+  color: #616e7c;
+  font-size: 15px;
+}
+.options-container {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+}
+.set-priority-container {
+}
+.date-time-priority-input-flex {
+  display: flex;
+  justify-content: space-around;
+}
+.priority-options-ul-container {
+  list-style: none;
+  display: flex;
+  padding-left: 8px;
+}
+.priority-label {
+  font-family: 'Roboto';
+  font-size: 12px;
+  font-weight: 500;
+  color: #7b8794;
+}
+.priority-li-item {
+  display: flex;
+  align-items: center;
+}
+
+.add-task-btn {
+  padding: 10px 20px 10px 20px;
+  border: solid 1px #e2e8f0;
+
+  font-family: 'Roboto';
+  background-color: transparent;
+  border-radius: 6px;
+}
+
+.date-time-picker {
+  border: solid 1px #d7dfe9;
+  padding: 10px;
+  font-family: 'Roboto';
+  color: #8a94a1;
+  border-radius: 7px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.btn-container {
+  align-self: flex-end;
+  justify-self: flex-end;
+  margin-top: 10px;
+}
+
+.participants-list-main-container {
+}
+.participants-ul-list-container {
+  overflow-y: auto;
+  width: 450px;
+  height: auto;
+  max-height: 200px;
+  border: solid 1px #e2e8f0;
+  padding: 0px;
+  box-shadow: 0px 4px 16px 0px #e8e8e8;
+  margin-top: 20px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+.participants-li-item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1px #e2e8f0;
+  padding: 0px 10px 0px 10px;
+}
+.team-add-btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+.display-team {
+  display: flex;
+  list-style: none;
+  padding-left: 0px;
+}
+.team-list {
+  list-style: none;
+  padding-left: 0px;
+}
