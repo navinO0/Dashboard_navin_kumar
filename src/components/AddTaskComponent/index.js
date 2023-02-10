@@ -85,11 +85,16 @@ const AddTaskComponent = () => {
             setParticipantsInpEle('')
             setDateTime('')
             setTeamInfo([])
+            setErrorMessage('')
             setShowParticipants(false)
           }
         }
 
-        const filteredList = usersDataList.filter(each =>
+        const compFileter = usersDataList.filter(
+          eachUeser => eachUeser.companyName === currentUser.companyName,
+        )
+
+        const filteredList = compFileter.filter(each =>
           each.username
             .toLowerCase()
             .includes(

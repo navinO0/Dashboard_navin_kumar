@@ -289,7 +289,10 @@ const App = () => {
     const userObj = userDataList.find(
       eachPerson => eachPerson.username === user.username,
     )
-    if (userObj === undefined) {
+    const compObj = userDataList.find(
+      eachPerson => eachPerson.companyName === user.companyName,
+    )
+    if (userObj === undefined && compObj !== undefined) {
       setUserDataList([...userDataList, user])
     }
 

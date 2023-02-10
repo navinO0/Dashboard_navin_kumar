@@ -52,7 +52,6 @@ const LoginPage = props => {
           usersDataList,
           StoreTheDataInLocalStorageFn,
           onAddUserFn,
-          updateLoginStatusFn,
         } = value
 
         const onSubmitForm = event => {
@@ -76,6 +75,11 @@ const LoginPage = props => {
           const getUserFromDataBase = usersDataList.find(
             eachPerson => eachPerson.password === password,
           )
+          const compObj = usersDataList.find(
+            eachPerson => eachPerson.companyName === companyName,
+          )
+          console.log(getUserObj)
+          console.log(getUserFromDataBase)
 
           if (companyName === '') {
             setErrorMessage('Enter Company Name')
@@ -85,20 +89,14 @@ const LoginPage = props => {
             setErrorMessage('Enter Password')
           } else if (
             getUserObj !== undefined &&
+            compObj !== undefined &&
             getUserFromDataBase === undefined
           ) {
             setErrorMessage('Enter Correct Password')
           } else {
-            const setOnlineDbUser = usersDataList.map(eachUser => {
-              if (eachUser.username === username) {
-                return {...eachUser, status: 'ONLINE'}
-              }
-              return eachUser
-            })
-
             onAddUserFn(loginDets)
             setCurrentUser(loginDets)
-            updateLoginStatusFn(setOnlineDbUser)
+
             StoreTheDataInLocalStorageFn()
 
             redirectToDashBoard(loginAs)
@@ -208,7 +206,7 @@ const LoginPage = props => {
                 </div>
                 <ReactPopUp
                   triggered={triggered}
-                  username={loginAs}
+                  username={username}
                   onClosePopup={onClosePopup}
                   onClickAddEmployee={onClickAddEmployee}
                   onClickProceed={onClickProceed}

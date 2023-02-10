@@ -3,11 +3,6 @@ import {OnlineStatus, LogButton} from '../../StyledComponents'
 
 import './index.css'
 
-const options = {
-  month: 'long',
-  day: 'numeric',
-}
-
 const ProfileCard = props => {
   const {id} = props
   let currentUserProfile
@@ -67,13 +62,6 @@ const ProfileCard = props => {
           currentUser.status === 'ONLINE' ? 'Log Out' : 'Log In'
         const onLineStatusD = status === 'ONLINE'
 
-        const dateTime = new Date(currentUserProfile.dateTime)
-        const formattedDateTime = dateTime.toLocaleDateString('en-US', options)
-        const getTime = `${dateTime.getUTCHours()}:${dateTime.getUTCMinutes()}`
-        let displayDeadline = `${formattedDateTime} Time: ${getTime}`
-        if (currentUserProfile.dateTime === '') {
-          displayDeadline = ''
-        }
         return (
           <div>
             <div className="profile-card-container">
@@ -98,9 +86,6 @@ const ProfileCard = props => {
                     {renderLogBtn}
                   </LogButton>
                 )}
-                <p className="label">
-                  Login Time : <span className="label">{displayDeadline}</span>
-                </p>
               </div>
             </div>
           </div>
