@@ -25,9 +25,10 @@ const AddTaskComponent = () => {
   const [priority, setPriority] = useState(priorityOptions[0].displayText)
   const [taskInp, setTaskInp] = useState('')
   const [participantsInpEle, setParticipantsInpEle] = useState('')
-  const [dateTime, setDateTime] = useState(new Date())
+  const [dateTime, setDateTime] = useState('')
   const [teamInfo, setTeamInfo] = useState([])
   const [showParticipants, setShowParticipants] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   const onchangeInputElement = event => {
     setTaskInp(event.target.value)
@@ -57,13 +58,35 @@ const AddTaskComponent = () => {
       {value => {
         const {onAddTasksListFn, usersDataList, currentUser, colors} = value
         const onClickAddBtn = () => {
+          const {companyName} = currentUser
           const id = v4()
           const task = taskInp
+
           const deadLine = dateTime
           const team = [...teamInfo, currentUser]
           const status = 'NOT_COMPLETED'
-          const taskData = {id, priority, task, team, status, deadLine}
-          onAddTasksListFn(taskData)
+          const taskData = {
+            id,
+            priority,
+            task,
+            team,
+            companyName,
+            status,
+            deadLine,
+          }
+          if (task === '') {
+            setErrorMessage('Enter Task')
+          } else if (deadLine === '') {
+            setErrorMessage('Set Deadline for the task')
+          } else {
+            onAddTasksListFn(taskData)
+            setPriority('')
+            setTaskInp('')
+            setParticipantsInpEle('')
+            setDateTime('')
+            setTeamInfo([])
+            setShowParticipants(false)
+          }
         }
 
         const filteredList = usersDataList.filter(each =>
@@ -163,6 +186,7 @@ const AddTaskComponent = () => {
                       </ButtonComp>
                     </div>
                   </div>
+                  <p className="error-msg">{errorMessage}</p>
                 </div>
               )}
             </div>
@@ -191,7 +215,7 @@ const AddTaskComponent = () => {
                         key={eachOne.id}
                         className="participants-li-item-container"
                       >
-                        <p>{username}</p>
+                        <p className="label">{username}</p>
                         <ButtonComp
                           type="button"
                           onClick={onClickAddParticipant}

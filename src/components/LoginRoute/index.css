@@ -34,6 +34,7 @@
 }
 .select-options {
   height: 40px;
+  display: flex;
   border: solid 1px #cbd5e1;
   border-radius: 6px;
   font-family: 'Roboto';
@@ -78,11 +79,30 @@
   font-weight: 400;
   color: #7b8794;
 }
-.options-container {
+.options-container-login {
   display: flex;
 }
 .creator-employee-inputs {
   display: flex;
   align-items: center;
   margin-right: 10px;
+}
+.credential-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 18px;
+}
+
+.label-hint {
+  font-family: 'Roboto';
+  font-size: 12px;
+  font-weight: 500;
+  color: #7b8794;
+  margin: 0px;
+  text-align: center;
+}
+.bottom-hint-container {
+  display: flex;
+  justify-content: center;
 }

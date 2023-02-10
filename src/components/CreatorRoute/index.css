@@ -11,8 +11,30 @@
   height: 100vh;
   overflow-y: auto;
 }
-.employee-card-creator-container {
+.employee-card-creator-container-lg {
   width: 20vw;
   height: 100vh;
   overflow-y: auto;
+}
+.tasks-ul-list-container-creator {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding-left: 7px;
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 576px) {
+  .employee-card-creator-container-lg {
+    width: 100%;
+    order: 2;
+    height: auto;
+  }
+  .creator-profile-card {
+    width: 100%;
+    height: auto;
+  }
+  .creator-main-container {
+    flex-direction: column;
+  }
 }

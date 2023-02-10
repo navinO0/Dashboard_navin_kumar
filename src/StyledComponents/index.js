@@ -2,7 +2,7 @@ import Styled from 'styled-components'
 
 export const TeamMemberComp = Styled.p`
 background-color: ${props => props.bgColor};
-padding : 6px 11px 6px 11px;
+padding : 4px 9px 4px 9px;
 border-radius : 40px;
 margin: 0px 7px 0px 3px;
 color :  #e2e8f0;
@@ -30,6 +30,27 @@ export const DetailsComp = Styled.p`
   color: #7b8794;
   font-weight: 400;
 `
+
+export const OnlineStatus = Styled.p`
+  font-family: 'roboto';
+  font-size: 13px;
+  margin-right: 10px;
+  margin-top: 0px;
+  color : ${props => (props.onStatus ? '#33991A' : '#E6331A')};
+  margin-bottom: 6px;
+`
+export const LogButton = Styled.button`
+  padding: 5px 20px 5px 20px;
+  border: solid 1px ${props => (props.onStatus ? '#E6331A' : '#33991A')};
+    margin-right : 7px;
+    color : ${props => (props.onStatus ? '#E6331A' : '#33991A')};
+  font-family: 'Roboto';
+  background-color: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+`
+
 export const PriorityComp = Styled.span`
 
   font-family: 'Roboto';
@@ -46,29 +67,8 @@ export const PriorityComp = Styled.span`
         return '#6666FF'
 
       default:
-        return null
+        return ''
     }
-  }}
+  }};
 
-`
-
-export const OnlineStatus = Styled.p`
-  font-family: 'roboto';
-  font-size: 14px;
-  margin-right: 10px;
-  margin-top: 0px;
-  color : ${props => (props.onStatus === 'ONLINE' ? '#33991A' : '#E6331A')};
-  margin-bottom: 6px;
-`
-export const LogButton = Styled.button`
-  padding: 5px 20px 5px 20px;
-  border: solid 1px ${props =>
-    props.onStatus !== 'ONLINE' ? '#33991A' : '#E6331A'};
-    margin-right : 7px;
-    color : ${props => (props.onStatus !== 'ONLINE' ? '#33991A' : '#E6331A')};
-  font-family: 'Roboto';
-  background-color: transparent;
-  border-radius: 6px;
-  cursor: pointer;
-  outline: none;
 `

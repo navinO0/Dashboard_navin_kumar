@@ -13,6 +13,8 @@ const EmployeeDetsCard = props => {
 
     status,
   } = eachOne
+
+  const onLineStatus = status === 'ONLINE'
   return (
     <StoreDataContext.Consumer>
       {value => {
@@ -20,17 +22,17 @@ const EmployeeDetsCard = props => {
         const randIndex = Math.ceil(Math.random() * colors.length - 1)
         const randomBackground = colors[randIndex]
         return (
-          <Link to={`/employee/${id}`}>
-            <li key={id}>
+          <Link to={`/employee/${id}`} className="link-item">
+            <li>
               <div className="employee-dets-card">
                 <div className="username-initial-container">
                   <TeamMemberComp bgColor={randomBackground}>
                     {eachOne.username.slice(0, 1)}
                   </TeamMemberComp>
-                  <p>{username}</p>
+                  <p className="employee-dets-name">{username}</p>
                 </div>
 
-                <OnlineStatus onStatus={status}>{status}</OnlineStatus>
+                <OnlineStatus onStatus={onLineStatus}>{status}</OnlineStatus>
               </div>
             </li>
           </Link>

@@ -15,3 +15,22 @@
   display: flex;
   align-items: center;
 }
+
+.link-item {
+  text-decoration: none;
+  font-family: 'Roboto';
+  color: #737c86;
+}
+
+.employs-card-main-container {
+  font-family: 'Roboto';
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #737c86;
+}
+
+.employee-dets-name {
+  font-size: 14px;
+  font-family: 'Roboto';
+}

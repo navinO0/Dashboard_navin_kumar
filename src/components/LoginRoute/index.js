@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import {v4} from 'uuid'
 import StoreDataContext from '../../StoreDataContext/index'
-import {ButtonComp} from '../../StyledComponents'
+
 import './index.css'
 import ReactPopUp from '../PopUpCompoenent'
 
@@ -47,11 +47,12 @@ const LoginPage = props => {
     <StoreDataContext.Consumer>
       {value => {
         const {
-          currentUser,
           setCurrentUser,
           setEmployeeLoggedFn,
-          employeeLoggedDt,
+          usersDataList,
           StoreTheDataInLocalStorageFn,
+          onAddUserFn,
+          updateLoginStatusFn,
         } = value
 
         const onSubmitForm = event => {
@@ -68,29 +69,38 @@ const LoginPage = props => {
             dateTime,
             status: 'ONLINE',
           }
+
+          const getUserObj = usersDataList.find(
+            eachPerson => eachPerson.username === username,
+          )
+          const getUserFromDataBase = usersDataList.find(
+            eachPerson => eachPerson.password === password,
+          )
+
           if (companyName === '') {
             setErrorMessage('Enter Company Name')
           } else if (username === '') {
             setErrorMessage('Enter User Name')
           } else if (password === '') {
             setErrorMessage('Enter Password')
+          } else if (
+            getUserObj !== undefined &&
+            getUserFromDataBase === undefined
+          ) {
+            setErrorMessage('Enter Correct Password')
           } else {
-            setCurrentUser(loginDets)
-            StoreTheDataInLocalStorageFn()
-            const formateedDate = `${
-              dateTime.getMonth() + 1
-            } ${dateTime.getUTCMonth()} /${dateTime.getDate()}   time: ${dateTime.getHours()} : ${dateTime.getHours()}`
-            const options = {
-              weekday: 'long',
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            }
+            const setOnlineDbUser = usersDataList.map(eachUser => {
+              if (eachUser.username === username) {
+                return {...eachUser, status: 'ONLINE'}
+              }
+              return eachUser
+            })
 
-            const formattedDateTime = dateTime.toLocaleDateString(
-              'en-US',
-              options,
-            )
+            onAddUserFn(loginDets)
+            setCurrentUser(loginDets)
+            updateLoginStatusFn(setOnlineDbUser)
+            StoreTheDataInLocalStorageFn()
+
             redirectToDashBoard(loginAs)
           }
         }
@@ -105,103 +115,151 @@ const LoginPage = props => {
           setLoginAs('EMPLOYEE')
           setEmployeeLoggedFn(false)
           setTriggered(false)
+          setCompanyName('')
         }
 
         return (
-          <div className="login-main-container">
-            <div className="login-image-container">
-              <img
-                src="https://res.cloudinary.com/dzapdxkgc/image/upload/v1675513043/4957136_fi4aqg.jpg"
-                alt="website Login"
-                className="register-image"
-              />
-            </div>
+          <div>
+            <div className="login-main-container">
+              <div className="login-image-container">
+                <img
+                  src="https://res.cloudinary.com/dzapdxkgc/image/upload/v1675513043/4957136_fi4aqg.jpg"
+                  alt="website Login"
+                  className="register-image"
+                />
+              </div>
 
-            <form onSubmit={onSubmitForm}>
-              <h1 className="login-main-heading">Let us join</h1>
-              <div className="username-topic-container">
-                <label htmlFor="companyName" className="label">
-                  COMPANY NAME
-                </label>
-                <input
-                  className="user-name-input"
-                  id="companyName"
-                  onChange={onchangeCompanyName}
-                  placeholder="Company Name"
-                  value={companyName}
-                />
-              </div>
-              <div className="username-topic-container">
-                <label htmlFor="username" className="label">
-                  NAME
-                </label>
-                <input
-                  className="user-name-input"
-                  id="username"
-                  onChange={onChangeUsername}
-                  placeholder="Your Name"
-                  value={username}
-                />
-              </div>
-              <div className="username-topic-container">
-                <label htmlFor="password" className="label">
-                  PASSWORD
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  className="user-name-input"
-                  placeholder="Password"
-                  onChange={onchangePassword}
-                  value={password}
-                />
-              </div>
-              <div className="username-topic-container">
-                <p className="creator-or-employee-qn">Creator or Employee ?</p>
-                <div className="options-container">
-                  <div className="creator-employee-inputs">
-                    <input
-                      type="radio"
-                      name="creatorOrEmployee"
-                      value="CREATOR"
-                      id="creator"
-                      onChange={selectWhoIsLogin}
-                      checked={loginAs === 'CREATOR'}
-                    />
-                    <label className="label" htmlFor="creator">
-                      CREATOR
-                    </label>
-                  </div>
-                  <div className="creator-employee-inputs">
-                    <input
-                      type="radio"
-                      name="creatorOrEmployee"
-                      value="EMPLOYEE"
-                      id="employee"
-                      onChange={selectWhoIsLogin}
-                      checked={loginAs === 'EMPLOYEE'}
-                    />
-                    <label className="label" htmlFor="employee">
-                      EMPLOYEE
-                    </label>
+              <form onSubmit={onSubmitForm}>
+                <h1 className="login-main-heading">Let us join</h1>
+                <div className="username-topic-container">
+                  <label htmlFor="companyName" className="label">
+                    COMPANY NAME
+                  </label>
+                  <input
+                    className="user-name-input"
+                    id="companyName"
+                    onChange={onchangeCompanyName}
+                    placeholder="Company Name"
+                    value={companyName}
+                  />
+                </div>
+                <div className="username-topic-container">
+                  <label htmlFor="username" className="label">
+                    NAME
+                  </label>
+                  <input
+                    className="user-name-input"
+                    id="username"
+                    onChange={onChangeUsername}
+                    placeholder="Your Name"
+                    value={username}
+                  />
+                </div>
+                <div className="username-topic-container">
+                  <label htmlFor="password" className="label">
+                    PASSWORD
+                  </label>
+                  <input
+                    type="password"
+                    id="password"
+                    className="user-name-input"
+                    placeholder="Password"
+                    onChange={onchangePassword}
+                    value={password}
+                  />
+                </div>
+                <div className="username-topic-container">
+                  <p className="creator-or-employee-qn">
+                    Creator or Employee ?
+                  </p>
+                  <div className="options-container-login">
+                    <div className="creator-employee-inputs">
+                      <input
+                        type="radio"
+                        name="creatorOrEmployee"
+                        value="CREATOR"
+                        id="creator"
+                        onChange={selectWhoIsLogin}
+                        checked={loginAs === 'CREATOR'}
+                      />
+                      <label className="label" htmlFor="creator">
+                        CREATOR
+                      </label>
+                    </div>
+                    <div className="creator-employee-inputs">
+                      <input
+                        type="radio"
+                        name="creatorOrEmployee"
+                        value="EMPLOYEE"
+                        id="employee"
+                        onChange={selectWhoIsLogin}
+                        checked={loginAs === 'EMPLOYEE'}
+                      />
+                      <label className="label" htmlFor="employee">
+                        EMPLOYEE
+                      </label>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="buttons-container">
-                <button type="submit" className="register-now-btn">
-                  Login
-                </button>
-              </div>
-              <ReactPopUp
-                triggered={triggered}
-                username={username}
-                onClosePopup={onClosePopup}
-                onClickAddEmployee={onClickAddEmployee}
-                onClickProceed={onClickProceed}
-              />
+                <div className="buttons-container">
+                  <button type="submit" className="register-now-btn">
+                    Login
+                  </button>
+                </div>
+                <ReactPopUp
+                  triggered={triggered}
+                  username={loginAs}
+                  onClosePopup={onClosePopup}
+                  onClickAddEmployee={onClickAddEmployee}
+                  onClickProceed={onClickProceed}
+                />
 
-              <p className="error-msg">{errorMessage}</p>
-            </form>
+                <p className="error-msg">{errorMessage}</p>
+              </form>
+            </div>
+            <div className="bottom-hint-container">
+              <div className="credential-hint">
+                <p className="label-hint">
+                  Use these login details form creator
+                </p>
+                <p className="label-hint">
+                  username : <span>abc</span>{' '}
+                </p>
+                <p className="label-hint">
+                  username : <span>NAVEEN</span>{' '}
+                </p>
+                <p className="label-hint">
+                  Password : <span>naveen</span>
+                </p>
+                <p className="label-hint">
+                  login as : <span>creator</span>
+                </p>
+              </div>
+              <div className="credential-hint">
+                <p className="label-hint">
+                  Use these login details form employee
+                </p>
+                <p className="label-hint">
+                  username : <span>abc</span>{' '}
+                </p>
+                <p className="label-hint">
+                  username : <span>STELLA</span>{' '}
+                </p>
+                <p className="label-hint">
+                  Password : <span>123456</span>
+                </p>
+                <p className="label-hint">
+                  login as : <span>Employee</span>
+                </p>
+              </div>
+            </div>
+            <div>
+              <p className="label-hint">
+                {' '}
+                Or else enter new company name and add employs by click on add
+                employee on popup
+              </p>
+            </div>
           </div>
         )
       }}

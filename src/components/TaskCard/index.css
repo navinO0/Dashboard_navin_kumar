@@ -4,7 +4,7 @@
 }
 
 .task-main-container {
-  width: 25vw;
+  width: 97%;
   border: solid 1px #e2e8f0;
   padding: 15px;
   margin-right: 5px;
@@ -105,21 +105,14 @@
   display: flex;
   align-items: center;
 }
-.custum-popupStyles {
-  width: 400px;
+.display-team {
+  display: flex;
+  list-style: none;
+  padding-left: 0px;
+  flex-wrap: wrap;
 }
-.popup-content {
-  margin: auto;
-  background: rgb(255, 255, 255);
-  width: auto;
-  padding: 5px;
-}
-.popup-content {
-  width: auto;
-}
-.popup-container-participants {
-  width: 600px;
-}
-.popup-overlay {
-  background: rgba(0, 0, 0, 0.5);
+.team-list {
+  list-style: none;
+  padding-left: 0px;
+  margin-bottom: 7px;
 }

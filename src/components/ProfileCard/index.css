@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 50px;
+  margin-right: 10px;
 }
 .profile-candidate {
   font-size: 30px;
@@ -39,10 +39,11 @@
 }
 .candidate-details {
   font-family: 'Roboto';
-  font-size: 19px;
+  font-size: 16px;
   font-weight: 600;
   padding: 0px;
   margin: 8px;
+  color: #646262;
 }
 
 .login-status {
@@ -50,7 +51,11 @@
   flex-direction: column;
   align-items: center;
 }
-.candidate-status {
-}
-.logout-btn {
+
+@media screen and (max-width: 576px) {
+  .profile-card-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 10px;
+  }
 }

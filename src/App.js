@@ -6,94 +6,95 @@ import LoginRoute from './components/LoginRoute'
 import CreatorRoute from './components/CreatorRoute'
 import EmployeeRoute from './components/EmployeeRoute'
 import NotFound from './components/NotFound'
+import HomeRoute from './components/HomeRoute'
 
 const employeesData = [
   {
     id: '923874938',
     companyName: 'abc',
-    username: 'Employee1',
-    password: 'asjdiopfjasd',
+    username: 'NAVEEN',
+    password: 'naveen',
     loginAs: 'EMPLOYEE',
     dateTime: '',
-    status: 'LOGGED_IN',
+    status: 'ONLINE',
   },
   {
     id: '92387493823',
     companyName: 'abc',
-    username: 'Employee2',
-    password: 'asjdiopfjasd',
+    username: 'RAVI',
+    password: '123456',
     loginAs: 'EMPLOYEE',
     dateTime: '',
-    status: 'LOGGED_OUT',
+    status: 'OFFLINE',
   },
   {
     id: '92387493825',
     companyName: 'abc',
-    username: 'Employee3',
-    password: 'asjdiopfjasd',
+    username: 'STELLA',
+    password: '123456',
     loginAs: 'EMPLOYEE',
     dateTime: '',
-    status: 'LOGGED_IN',
+    status: 'ONLINE',
   },
   {
     id: '92387493826',
     companyName: 'abc',
-    username: 'Employee4',
-    password: 'asjdiopfjasd',
+    username: 'ROSIE',
+    password: '123456',
     loginAs: 'EMPLOYEE',
     dateTime: '',
-    status: 'LOGGED_IN',
+    status: 'OFFLINE',
   },
   {
     id: '92387493827',
     companyName: 'abc',
-    username: 'Employee5',
-    password: 'asjdiopfjasd',
+    username: 'JOHN',
+    password: '123456',
     loginAs: 'EMPLOYEE',
     dateTime: '',
-    status: 'LOGGED_IN',
+    status: 'OFFLINE',
   },
   {
     id: '92387493828',
     companyName: 'abc',
-    username: 'Employee6',
-    password: 'asjdiopfjasd',
+    username: 'EMMA WATSON',
+    password: '123456',
     loginAs: 'EMPLOYEE',
     dateTime: '',
-    status: 'LOGGED_IN',
+    status: 'OFFLINE',
   },
   {
     id: '92387493834',
     companyName: 'abc',
-    username: 'Employee7',
-    password: 'asjdiopfjasd',
+    username: 'JOHN WICK',
+    password: '123456',
     loginAs: 'EMPLOYEE',
     dateTime: '',
-    status: 'LOGGED_IN',
+    status: 'OFFLINE',
   },
   {
     id: '9238749353',
     companyName: 'abc',
-    username: 'Employee8',
-    password: 'asjdiopfjasd',
+    username: 'SPIDERMAN',
+    password: '123456',
     loginAs: 'EMPLOYEE',
     dateTime: '',
-    status: 'LOGGED_IN',
+    status: 'OFFLINE',
   },
   {
     id: '923874938989',
     companyName: 'abc',
-    username: 'Employee9',
-    password: 'asjdiopfjasd',
+    username: 'SUPERMAN',
+    password: '123456',
     loginAs: 'EMPLOYEE',
     dateTime: '',
-    status: 'LOGGED_IN',
+    status: 'OFFLINE',
   },
   {
     id: '9238749382321',
     companyName: 'abc',
-    username: 'Employee10',
-    password: 'asjdiopfjasd',
+    username: 'RAMU',
+    password: '123456',
     loginAs: 'EMPLOYEE',
     dateTime: '',
     status: 'ONLINE',
@@ -103,74 +104,106 @@ const employeesData = [
 const initialTaskData = [
   {
     id: '234234',
+    companyName: 'abc',
     task: 'task 1',
     deadLine: '',
     priority: 'MEDIUM',
     status: 'NOT_COMPLETED',
-    team: [],
+    team: [
+      {
+        id: '92387493823',
+        companyName: 'abc',
+        username: 'RAVI',
+        password: '123456',
+        loginAs: 'EMPLOYEE',
+        dateTime: '',
+        status: 'OFFLINE',
+      },
+
+      {
+        id: '92387493826',
+        companyName: 'abc',
+        username: 'ROSIE',
+        password: '123456',
+        loginAs: 'EMPLOYEE',
+        dateTime: '',
+        status: 'OFFLINE',
+      },
+      {
+        id: '92387493827',
+        companyName: 'abc',
+        username: 'JOHN',
+        password: '123456',
+        loginAs: 'EMPLOYEE',
+        dateTime: '',
+        status: 'OFFLINE',
+      },
+      {
+        id: '92387493828',
+        companyName: 'abc',
+        username: 'EMMA WATSON',
+        password: '123456',
+        loginAs: 'EMPLOYEE',
+        dateTime: '',
+        status: 'OFFLINE',
+      },
+
+      {
+        id: '9238749353',
+        companyName: 'abc',
+        username: 'SPIDERMAN',
+        password: '123456',
+        loginAs: 'EMPLOYEE',
+        dateTime: '',
+        status: 'OFFLINE',
+      },
+      {
+        id: '923874938989',
+        companyName: 'abc',
+        username: 'SUPERMAN',
+        password: '123456',
+        loginAs: 'EMPLOYEE',
+        dateTime: '',
+        status: 'OFFLINE',
+      },
+    ],
   },
   {
     id: '2342342',
+    companyName: 'abc',
     task: 'task 2',
     deadLine: '',
     priority: 'MEDIUM',
-    team: [],
-    status: 'NOT_COMPLETED',
-  },
-  {
-    id: '2342343',
-    task: 'task 3',
-    deadLine: '',
-    priority: 'MEDIUM',
-    team: [],
-    status: 'NOT_COMPLETED',
-  },
-  {
-    id: '2342344',
-    task: 'task 4',
-    deadLine: '',
-    priority: 'MEDIUM',
-    team: [],
-    status: 'NOT_COMPLETED',
-  },
-  {
-    id: '2342345',
-    task: 'task 5',
-    deadLine: '',
-    priority: 'MEDIUM',
-    team: [],
-    status: 'NOT_COMPLETED',
-  },
-  {
-    id: '2342346',
-    task: 'task 6',
-    deadLine: '',
-    priority: 'MEDIUM',
-    team: [],
-    status: 'NOT_COMPLETED',
-  },
-  {
-    id: '2342347',
-    task: 'task 7',
-    deadLine: '',
-    team: [],
-    priority: 'MEDIUM',
-    status: 'NOT_COMPLETED',
-  },
-  {
-    id: '2342348',
-    task: 'task 8',
-    deadLine: '',
-    team: [],
-    priority: 'MEDIUM',
-    status: 'NOT_COMPLETED',
-  },
-  {
-    id: '2342349',
-    task: 'task 9',
-    deadLine: '',
-    priority: 'MEDIUM',
-    team: [],
+    team: [
+      {
+        id: '92387493828',
+        companyName: 'abc',
+        username: 'EMMA WATSON',
+        password: '123456',
+        loginAs: 'EMPLOYEE',
+        dateTime: '',
+        status: 'OFFLINE',
+      },
+
+      {
+        id: '9238749353',
+        companyName: 'abc',
+        username: 'SPIDERMAN',
+        password: '123456',
+        loginAs: 'EMPLOYEE',
+        dateTime: '2023-02-10T12:10',
+        status: 'OFFLINE',
+      },
+      {
+        id: '923874938989',
+        companyName: 'abc',
+        username: 'SUPERMAN',
+        password: '123456',
+        loginAs: 'EMPLOYEE',
+        dateTime: '2023-02-10T12:10',
+        status: 'OFFLINE',
+      },
+    ],
     status: 'NOT_COMPLETED',
   },
 ]
@@ -192,7 +225,7 @@ const colorArray = [
   '#6680B3',
   '#66991A',
   '#FF99E6',
-  '#CCFF1A',
+
   '#FF1A66',
   '#E6331A',
 
@@ -213,7 +246,6 @@ const colorArray = [
   '#00E680',
   '#4D8066',
   '#809980',
-  '#E6FF80',
 
   '#999933',
   '#FF3380',
@@ -253,6 +285,21 @@ const App = () => {
     localStorage.setItem('storeLocalStorage', stringified)
   }
 
+  const onAddUser = user => {
+    const userObj = userDataList.find(
+      eachPerson => eachPerson.username === user.username,
+    )
+    if (userObj === undefined) {
+      setUserDataList([...userDataList, user])
+    }
+
+    StoreTheDataInLocalStorage()
+  }
+
+  const updateLoginStatus = updatedList => {
+    setUserDataList(updatedList)
+  }
+
   const onAddTasksList = taskData => {
     setTasksList([...tasksList, taskData])
     StoreTheDataInLocalStorage()
@@ -277,15 +324,17 @@ const App = () => {
         colors: colorArray,
         updateTasksListFn: updateTasksList,
         StoreTheDataInLocalStorageFn: StoreTheDataInLocalStorage,
+        onAddUserFn: onAddUser,
+        updateLoginStatusFn: updateLoginStatus,
       }}
     >
       <>
         <BrowserRouter>
           <Switch>
             <Route exact path="/login" component={LoginRoute} />
+            <Route exact path="/" component={HomeRoute} />
             <Route exact path="/creator" component={CreatorRoute} />
             <Route exact path="/employee/:id" component={EmployeeRoute} />
-
             <Route component={NotFound} />
           </Switch>
         </BrowserRouter>
