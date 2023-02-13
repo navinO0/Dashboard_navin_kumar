@@ -44,7 +44,6 @@ const LoginPage = props => {
     <StoreDataContext.Consumer>
       {value => {
         const {
-          currentUser,
           setCurrentUser,
           setEmployeeLoggedFn,
           usersDataList,
@@ -115,10 +114,6 @@ const LoginPage = props => {
 
         if (whoIsDt === '') {
           return <Redirect to="/" />
-        }
-
-        if (currentUser !== undefined) {
-          return <Redirect to={`/${currentUser.loginAs}`} />
         }
 
         return (
