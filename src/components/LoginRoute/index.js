@@ -118,7 +118,7 @@ const LoginPage = props => {
         }
 
         if (currentUser !== undefined) {
-          ;<Redirect to={`/${currentUser.loginAs}`} />
+          return <Redirect to={`/${currentUser.loginAs}`} />
         }
 
         return (
