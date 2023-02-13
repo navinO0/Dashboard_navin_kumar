@@ -1,6 +1,6 @@
 const NotFound = () => (
   <div>
-    <h1>this is not found route</h1>
+    <h1>the page that you have looking for is not found</h1>
   </div>
 )
 

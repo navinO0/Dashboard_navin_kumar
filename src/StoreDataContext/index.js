@@ -17,6 +17,8 @@ const StoreDataContext = React.createContext({
   StoreTheDataInLocalStorageFn: () => {},
   onAddUserFn: () => {},
   updateLoginStatusFn: () => {},
+  setWhoIsFn: () => {},
+  whoIsDt: '',
 })
 
 export default StoreDataContext

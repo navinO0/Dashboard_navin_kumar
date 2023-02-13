@@ -261,6 +261,7 @@ const colorArray = [
 ]
 
 const App = () => {
+  const [whoIs, setWhoIs] = useState('')
   const [userData, setUserData] = useState('')
   const [employeeLogged, setEmployeeLogged] = useState('')
   const [userDataList, setUserDataList] = useState(employeesData)
@@ -269,11 +270,13 @@ const App = () => {
   useEffect(() => {
     const getDetailsFromLocal = () => {
       const getDets = localStorage.getItem('storeLocalStorage')
-      const parsedData = JSON.parse(getDets)
+      if (getDets !== null) {
+        const parsedData = JSON.parse(getDets)
 
-      setUserData(parsedData.userData)
-      setUserDataList(parsedData.userDataList)
-      setTasksList(parsedData.tasksList)
+        setUserData(parsedData.userData)
+        setUserDataList(parsedData.userDataList)
+        setTasksList(parsedData.tasksList)
+      }
     }
 
     getDetailsFromLocal()
@@ -286,15 +289,7 @@ const App = () => {
   }
 
   const onAddUser = user => {
-    const userObj = userDataList.find(
-      eachPerson => eachPerson.username === user.username,
-    )
-    const compObj = userDataList.find(
-      eachPerson => eachPerson.companyName === user.companyName,
-    )
-    if (userObj === undefined && compObj !== undefined) {
-      setUserDataList([...userDataList, user])
-    }
+    setUserDataList([...userDataList, user])
 
     StoreTheDataInLocalStorage()
   }
@@ -329,6 +324,8 @@ const App = () => {
         StoreTheDataInLocalStorageFn: StoreTheDataInLocalStorage,
         onAddUserFn: onAddUser,
         updateLoginStatusFn: updateLoginStatus,
+        setWhoIsFn: setWhoIs,
+        whoIsDt: whoIs,
       }}
     >
       <>

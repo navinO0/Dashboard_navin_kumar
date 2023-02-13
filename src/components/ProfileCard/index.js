@@ -1,3 +1,4 @@
+import {Redirect} from 'react-router-dom'
 import StoredDataContext from '../../StoreDataContext'
 import {OnlineStatus, LogButton} from '../../StyledComponents'
 
@@ -16,6 +17,7 @@ const ProfileCard = props => {
       {value => {
         const {
           currentUser,
+
           usersDataList,
           setUsersDataList,
           StoreTheDataInLocalStorageFn,
@@ -48,7 +50,7 @@ const ProfileCard = props => {
           setCurrentUser({...currentUser, status: currUsrStatus})
 
           setUsersDataList(updatedUsersList)
-
+          setCurrentUser({})
           StoreTheDataInLocalStorageFn()
         }
 
@@ -61,7 +63,9 @@ const ProfileCard = props => {
         const renderLogBtn =
           currentUser.status === 'ONLINE' ? 'Log Out' : 'Log In'
         const onLineStatusD = status === 'ONLINE'
-
+        if (currentUser.username === undefined) {
+          return <Redirect to="/" />
+        }
         return (
           <div>
             <div className="profile-card-container">

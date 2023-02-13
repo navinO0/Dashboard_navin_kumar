@@ -1,3 +1,4 @@
+import {Redirect} from 'react-router-dom'
 import {useState} from 'react'
 import {v4} from 'uuid'
 import StoreDataContext from '../../StoreDataContext/index'
@@ -10,7 +11,7 @@ const LoginPage = props => {
   const [username, setUsername] = useState('')
   const [companyName, setCompanyName] = useState('')
   const [password, setPassword] = useState('')
-  const [loginAs, setLoginAs] = useState('CREATOR')
+
   const [errorMessage, setErrorMessage] = useState('')
 
   const [triggered, setTriggered] = useState(false)
@@ -24,10 +25,6 @@ const LoginPage = props => {
 
   const onchangeCompanyName = event => {
     setCompanyName(event.target.value)
-  }
-
-  const selectWhoIsLogin = event => {
-    setLoginAs(event.target.value)
   }
 
   const onClosePopup = () => {
@@ -47,9 +44,11 @@ const LoginPage = props => {
     <StoreDataContext.Consumer>
       {value => {
         const {
+          currentUser,
           setCurrentUser,
           setEmployeeLoggedFn,
           usersDataList,
+          whoIsDt,
           StoreTheDataInLocalStorageFn,
           onAddUserFn,
         } = value
@@ -64,7 +63,7 @@ const LoginPage = props => {
             companyName,
             username,
             password,
-            loginAs,
+            loginAs: whoIsDt,
             dateTime,
             status: 'ONLINE',
           }
@@ -78,8 +77,6 @@ const LoginPage = props => {
           const compObj = usersDataList.find(
             eachPerson => eachPerson.companyName === companyName,
           )
-          console.log(getUserObj)
-          console.log(getUserFromDataBase)
 
           if (companyName === '') {
             setErrorMessage('Enter Company Name')
@@ -99,7 +96,7 @@ const LoginPage = props => {
 
             StoreTheDataInLocalStorageFn()
 
-            redirectToDashBoard(loginAs)
+            redirectToDashBoard(whoIsDt)
           }
         }
 
@@ -110,10 +107,18 @@ const LoginPage = props => {
         const onClickAddEmployee = () => {
           setUsername('')
           setPassword('')
-          setLoginAs('EMPLOYEE')
+
           setEmployeeLoggedFn(false)
           setTriggered(false)
           setCompanyName('')
+        }
+
+        if (whoIsDt === '') {
+          return <Redirect to="/" />
+        }
+
+        if (currentUser !== undefined) {
+          ;<Redirect to={`/${currentUser.loginAs}`} />
         }
 
         return (
@@ -129,6 +134,9 @@ const LoginPage = props => {
 
               <form onSubmit={onSubmitForm}>
                 <h1 className="login-main-heading">Let us join</h1>
+                <p>
+                  Enter <span>{whoIsDt} Details</span>
+                </p>
                 <div className="username-topic-container">
                   <label htmlFor="companyName" className="label">
                     COMPANY NAME
@@ -166,39 +174,7 @@ const LoginPage = props => {
                     value={password}
                   />
                 </div>
-                <div className="username-topic-container">
-                  <p className="creator-or-employee-qn">
-                    Creator or Employee ?
-                  </p>
-                  <div className="options-container-login">
-                    <div className="creator-employee-inputs">
-                      <input
-                        type="radio"
-                        name="creatorOrEmployee"
-                        value="CREATOR"
-                        id="creator"
-                        onChange={selectWhoIsLogin}
-                        checked={loginAs === 'CREATOR'}
-                      />
-                      <label className="label" htmlFor="creator">
-                        CREATOR
-                      </label>
-                    </div>
-                    <div className="creator-employee-inputs">
-                      <input
-                        type="radio"
-                        name="creatorOrEmployee"
-                        value="EMPLOYEE"
-                        id="employee"
-                        onChange={selectWhoIsLogin}
-                        checked={loginAs === 'EMPLOYEE'}
-                      />
-                      <label className="label" htmlFor="employee">
-                        EMPLOYEE
-                      </label>
-                    </div>
-                  </div>
-                </div>
+
                 <div className="buttons-container">
                   <button type="submit" className="register-now-btn">
                     Login

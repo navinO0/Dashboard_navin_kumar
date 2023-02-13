@@ -6,7 +6,10 @@ const EmployesCard = () => (
   <StoreDataContext.Consumer>
     {value => {
       const {usersDataList, currentUser} = value
-      const filteredList = usersDataList.filter(
+      const companyFiltered = usersDataList.filter(
+        eachUs => eachUs.companyName === currentUser.companyName,
+      )
+      const filteredList = companyFiltered.filter(
         each => each.username !== currentUser.username,
       )
       return (
